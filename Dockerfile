@@ -14,7 +14,8 @@ RUN cd sails-test && npm install sails -g && npm install
 # Install Vue packages and build
 RUN cd vue-test && npm install && npm run build
 # Copy Vue components to Sails.js folder
-COPY ./vue-test/dist/* ./sails-test/vue/
+WORKDIR /usr/src/app/vue-test/dist
+COPY . /sails-test/vue/
 # Change working directory to Sails folder
 WORKDIR /usr/src/app/sails-test
 # Run Sails app
